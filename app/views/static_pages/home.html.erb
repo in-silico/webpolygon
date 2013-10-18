@@ -1,0 +1,52 @@
+
+<div class="page-header">
+    <h1>Web Polygon Drawer</h1>
+     <p> A web app created to draw a polygon around an object inside an image
+     </p>
+     
+</div>
+
+
+
+<div id="papa" fillStyle="white">
+    <canvas width="500" height="500" id="canvas" >  </canvas>
+</div>
+
+
+
+
+<script> 
+first = true;
+var xa, ya, x2, y2;
+$("canvas").drawRect({
+  layer: true,
+  fillStyle: "white",
+  x: 0, y: 0,
+  width: 2000,
+  height: 2000,
+  click: function(layer) {
+    
+    if (first){
+        first = false;
+        xa = layer.eventX;
+        ya = layer.eventY;       
+    } 
+    else{
+        $("canvas").drawLine({
+        layer: true,
+        strokeStyle: "#000",
+        strokeWidth: 1,
+        x1: xa, y1: ya,
+        x2: layer.eventX, y2: layer.eventY
+        
+        });}
+        xa = layer.eventX;
+        ya = layer.eventY;   
+    }
+  
+});
+
+</script>
+
+
+
